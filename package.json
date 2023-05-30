@@ -9,6 +9,11 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "terser": "^5.17.6",
     "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "@vitejs/plugin-legacy": "^4.0.4",
+    "bootstrap": "^5.2.3"
   }
 }

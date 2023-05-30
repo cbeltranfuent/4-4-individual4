@@ -60,6 +60,35 @@ mostrarPokemon('Pikachu'); // Muestra los datos de Pikachu
 mostrarPokemon(25); // Muestra los datos de Pikachu
 mostrarPokemon('Charizard'); // Muestra "No se encontró un Pokemon con el nombre o ID "Charizard""
 
+// Obtener referencias a los elementos del DOM
+const pokemonInput = document.querySelector('#pokemonInput');
+const buscarPokemonBtn = document.querySelector('#buscarPokemon');
+const resultadoDiv = document.querySelector('#resultado');
+
+// Agregar un event listener al botón para buscar el Pokemon cuando se haga clic
+buscarPokemonBtn.addEventListener('click', () => {
+  // Obtener el valor del input
+  let nombreOId = pokemonInput.value;
+
+  // Convertir el valor a número si es posible
+  if (!isNaN(nombreOId)) {
+    nombreOId = Number(nombreOId);
+  }
+
+  // Buscar el Pokemon por su nombre o ID
+  let pokemon = data.find(p => p.name === nombreOId || p.id === nombreOId);
+
+  // Si se encuentra el Pokemon, mostrar sus datos en pantalla
+  if (pokemon) {
+    resultadoDiv.innerHTML = `
+      <p>ID: ${pokemon.id}</p>
+      <p>Nombre: ${pokemon.name}</p>
+      <p>Tipos: ${pokemon.types.join(', ')}</p>
+    `;
+  } else {
+    resultadoDiv.innerHTML = `<p>No se encontró un Pokemon con el nombre o ID "${nombreOId}"</p>`;
+  }
+});
 
 
 console.log("============ F I N ==============")
